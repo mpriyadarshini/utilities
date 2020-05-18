@@ -1,0 +1,24 @@
+.container {
+    margin:0 auto;
+    padding:40px;
+    max-width:400px;
+    border:1px solid black;
+}
+
+.result{
+    margin:0 auto;
+    padding:20px;
+    max-width:600px;
+    white-space: pre-line;
+}
+
+label,input,select{
+    display: block;
+    width:100%;
+    box-sizing: border-box;
+
+}
+.form-group{
+    margin-bottom: 16px;
+
+}

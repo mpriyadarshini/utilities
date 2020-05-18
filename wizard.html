@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="wizard.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <form id="form">
+        <div class="container" >
+            <div >
+                <div class="form-group">
+                    <label for="cname">Name:</label>
+                    <input type="text" id="cname">
+                </div>
+                <div class="form-group">
+                    <label for="rsa">RSA:</label>
+                    <select id="rsa">
+                        <option value="RSA">RSA</option>
+                        <option value="DFA">DFA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rsa">Keysize:</label>
+                    <select id="keysize">
+                        <option value="2048">2048</option>
+                        <option value="4096">4096</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rsa">Organisation:</label>
+                    <input type="text" id="org">
+                </div>
+                <div class="form-group">
+
+                    <label for="rsa">Department:</label>
+                    <input type="text" id="depart">
+                </div>
+                <div class="form-group">
+                    <label for="rsa">State:</label>
+                    <input type="text" id="state">
+                </div>
+                <div class="form-group">
+                    <label for="rsa">Country:</label>
+                    <input type="text" id="country">
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+
+
+        </div>
+        <div class="result">
+            <h3>Output is:</h3>
+            <code class="result" id="spanresult"></code>
+        </div>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const cname = document.getElementById("cname").value;
+            const org = document.getElementById("org").value;
+            const department = document.getElementById("depart").value;
+            const state = document.getElementById("state").value;
+            const rsa = document.getElementById("rsa").value;
+            const keysize = document.getElementById("keysize").value;
+            const country = document.getElementById("country").value;
+            const result = `keytool -genkey -alias ${cname} -keyalg ${rsa} -keysize ${keysize} -keystore ${cname}.jks -dname "CN=${cname}, O=${org}, L=${department}, ST=${state}, C=${country}" -ext "SAN=dns:${cname}"`;
+
+            //document.getElementById("spanresult").innerHTML = cname;
+            document.getElementById('spanresult').textContent = result;
+            console.log("success");
+
+        });
+
+    </script>
+</body>
+
+
+</html>
